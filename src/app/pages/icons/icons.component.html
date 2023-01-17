@@ -1,0 +1,60 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+
+  <!-- Table -->
+
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <div class=" col-md-3" class="input-group"  style="width: 51%;height: 20%;position: relative;left: 3%;">
+            <input [(ngModel)]="x" type="search"  style="background-color: #F5F5F5" class="form-control rounded" placeholder="Search Product By SKU,Name,Category..." aria-label="Search" aria-describedby="search-addon" />
+            <button type="button"  class="btn btn-primary b1" (click)="productService.findByAttributes(this.x)">search</button>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <button type="button" class="btn btn-icon btn-primary" (click)="findProducts()"><i class="fa fa-refresh" ></i></button>
+            <button   style="float: right;position: relative;left: 87%;border-radius: 7%"type="button"  routerLink="/products/product-create" class="btn btn-primary b2"  >New Product</button>
+
+          </div>
+          <br>
+          <br>
+          <h3 class="mb-0">Products</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+            <tr>
+              <th scope="col">SKU</th>
+              <th scope="col">Name</th>
+              <th scope="col">Category</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Price</th>
+              <th scope="col">Status</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <tr *ngFor="let p of products index as i ">
+              <td>
+
+                    <h6>{{p.sku}}</h6>
+              </td>
+              <td>{{p.name}} </td>
+              <td>{{p.category.label}}</td>
+              <td>{{p.stockQuantity}}</td>
+              <td>{{p.costPrice}} <b> MAD</b></td>
+              <td>
+                  <span class="badge badge-dot mr-4">
+                    <i class="bg-warning"></i> pending
+                  </span>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div></div>
+</div>
+    </div>
+  </div>
